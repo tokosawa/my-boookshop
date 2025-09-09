@@ -1,0 +1,15 @@
+@authUrl=https://6bd2d57ctrial.authentication.us10.hana.ondemand.com
+@clientid=sb-my-bookshop-6bd2d57ctrial-dev!t505782
+@clientsecret=61a65e1f-3b4e-4231-840c-cafad1f1a654$lUO32vj64HQsIrEPkl3b_o79oHeacH_QsL2qYllEiwI=
+@server=6bd2d57ctrial-dev-my-bookshop-srv.cfapps.us10-001.hana.ondemand.com
+
+###Get Token
+# @name client_credentials_grant
+POST {{authUrl}}/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id={{clientid}}&client_secret={{clientsecret}}
+
+###
+GET {{server}}/odata/v4/catalog/Books?
+Authorization: Bearer {{client_credentials_grant.response.body.access_token}}
