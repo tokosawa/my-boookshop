@@ -10,6 +10,7 @@ build-parameters:
       commands:
         - npm ci
         - npx cds build --production
+        #npm installはnpm ciに包含されるため記載不要
 modules:
   - name: my-bookshop-srv
     type: nodejs
